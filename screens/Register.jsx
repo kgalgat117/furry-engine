@@ -19,8 +19,8 @@ export default function Register() {
                     <View style={styles.lowerCard}>
                         <Text style={styles.headerTitle}>Create Account</Text>
                         <Input value={currentUser.name} fieldName="name" placeHolder="Name" ></Input>
-                        <Input value={currentUser.email} fieldName="email" placeHolder="Email" ></Input>
                         <Input value={currentUser.phone} keyboardType="phone-pad" fieldName="phone" placeHolder="Phone" ></Input>
+                        <Input value={currentUser.password} secureTextEntry={true} fieldName="password" placeHolder="Password" ></Input>
                     </View>
                 </ImageBackground>
             </View>
