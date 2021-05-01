@@ -1,28 +1,30 @@
-import React from 'react'
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import { Button, Card, Title, Paragraph, DefaultTheme } from 'react-native-paper';
-import { COLORS } from '../constant';
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { useSelector } from 'react-redux';
+import { Input } from '../component';
+
 
 
 export default function Register() {
 
     const image = { uri: "https://picsum.photos/id/1036/900/1100?blur" };
+    const currentUser = useSelector(state => state.currentUser)
 
     return (
-        <View style={styles.container}>
-            <ImageBackground source={image} style={styles.image}>
-                <View style={styles.header}>
-                    <Text style={styles.text}>Sign Up</Text>
-                </View>
-                <View style={styles.body}>
-                    <Text style={styles.text}>Sign Up</Text>
-                </View>
-                <View style={styles.footer}>
-                    <Text style={styles.text}>Sign Up</Text>
-                </View>
-            </ImageBackground>
-        </View>
-
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.container}>
+                <ImageBackground source={image} style={styles.image}>
+                    <View style={styles.upperCard}>
+                    </View>
+                    <View style={styles.lowerCard}>
+                        <Text style={styles.headerTitle}>Create Account</Text>
+                        <Input value={currentUser.name} fieldName="name" placeHolder="Name" ></Input>
+                        <Input value={currentUser.email} fieldName="email" placeHolder="Email" ></Input>
+                        <Input value={currentUser.phone} keyboardType="phone-pad" fieldName="phone" placeHolder="Phone" ></Input>
+                    </View>
+                </ImageBackground>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -30,34 +32,28 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "column",
-        // backgroundColor: DefaultTheme.colors.primary,
     },
-    header: {
-        flex: 0.5,
-        marginTop: 55,
-        borderColor: COLORS.PRIMARY,
-        borderWidth: 1
-    },
-    body: {
-        flex: 3,
-        borderColor: COLORS.PRIMARY,
-        borderWidth: 1
-    },
-    footer: {
+    upperCard: {
         flex: 1.5,
-        borderColor: COLORS.PRIMARY,
-        borderWidth: 1
+    },
+    lowerCard: {
+        flex: 3,
+        backgroundColor: "white",
+        borderTopEndRadius: 40,
+        borderTopStartRadius: 40,
     },
     image: {
         flex: 1,
         resizeMode: "cover",
         justifyContent: "center"
     },
-    text: {
+    headerTitle: {
         color: "black",
-        fontSize: 42,
+        fontSize: 32,
+        paddingTop: 10,
+        paddingHorizontal: 4,
         fontWeight: "bold",
-        textAlign: "center",
-        // backgroundColor: "#000000a0"
+        textAlign: 'center',
+        marginBottom: 40
     }
 });
