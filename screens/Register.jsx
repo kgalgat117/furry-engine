@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Input } from '../component';
+import { Button, Input } from '../component';
 
 
 
@@ -21,6 +21,7 @@ export default function Register() {
                         <Input value={currentUser.name} fieldName="name" placeHolder="Name" ></Input>
                         <Input value={currentUser.phone} keyboardType="phone-pad" fieldName="phone" placeHolder="Phone" ></Input>
                         <Input value={currentUser.password} secureTextEntry={true} fieldName="password" placeHolder="Password" ></Input>
+                        <Button buttonStyle={styles.button} text="Sign Up" mode="contained"></Button>
                     </View>
                 </ImageBackground>
             </View>
@@ -29,6 +30,9 @@ export default function Register() {
 }
 
 const styles = StyleSheet.create({
+    button: {
+        marginTop: 110,
+    },
     container: {
         flex: 1,
         flexDirection: "column",
@@ -38,7 +42,7 @@ const styles = StyleSheet.create({
     },
     lowerCard: {
         flex: 3,
-        backgroundColor: "white",
+        backgroundColor: "#ececec",
         borderTopEndRadius: 40,
         borderTopStartRadius: 40,
     },
