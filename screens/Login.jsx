@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ActionStrings } from '../action';
 import { Button, Input } from '../component';
 import { COLORS } from '../constant';
-
-
 
 export default function Login(props) {
 
@@ -24,9 +22,14 @@ export default function Login(props) {
         setLoading(true)
         setTimeout(() => {
             let response = { data: { token: 'some_valid_token', profile: { status: 'active', name: 'Karan Galgat', phone: '7503162710' } } }
-            dispatch({ type: ActionStrings.USER_SIGN_UP_DATA_UPDATE, payload: response.data.profile })
+            dispatch({ type: ActionStrings.USER_SIGN_UP_DATA_UPDATE, payload: { ...response.data.profile, ...response.data.token } })
             setLoading(false)
+            redirectToHome()
         }, 2000)
+    }
+
+    const redirectToHome = () => {
+        props.navigation.navigate("Home", {})
     }
 
     return (
