@@ -1,8 +1,9 @@
 import React from 'react'
 import { Button as RNButton } from 'react-native-paper';
 import { StyleSheet, View, TextInput } from 'react-native';
+import { COLORS } from '../constant';
 
-export function Button({ mode, buttonStyle, text, loading, ...props }) {
+export function Button({ mode, buttonStyle, text, loading, onPress, ...props }) {
 
     const styles = StyleSheet.create({
         button: {
@@ -17,7 +18,7 @@ export function Button({ mode, buttonStyle, text, loading, ...props }) {
 
     return (
         <View style={styles.container}>
-            <RNButton color="#985bc9" loading={loading} style={styles.button} mode={mode} onPress={() => console.log('Pressed')}>
+            <RNButton color={COLORS.PRIMARY} loading={loading} style={styles.button} mode={mode} onPress={onPress}>
                 {text}
             </RNButton>
         </View>

@@ -1,7 +1,5 @@
-import { ActionStrings, userLogin, userSignUpDataUpdate } from './users'
+import { ActionStrings } from './strings'
 
 export {
-    ActionStrings,
-    userLogin,
-    userSignUpDataUpdate
+    ActionStrings
 }

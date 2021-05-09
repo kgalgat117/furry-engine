@@ -12,7 +12,7 @@ export default function Splash(props) {
     useFocusEffect(useCallback(() => {
         let navigate = "Home"
         if(!currentUser.status){
-            navigate = "Register"
+            navigate = "Login"
         }
         props.navigation.navigate(navigate)
     }, []))
